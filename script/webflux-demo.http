@@ -1,0 +1,20 @@
+###
+POST http://localhost:8080/reactive-math/multiply
+accept: application/json
+Content-Type: application/json
+
+{
+  "first": 5,
+  "second": 3
+}
+
+### set request header
+POST http://localhost:8080/reactive-math/multiply
+some-key: some-value
+accept: application/json
+Content-Type: application/json
+
+{
+  "first": 5,
+  "second": 3
+}
