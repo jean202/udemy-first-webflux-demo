@@ -18,3 +18,15 @@ Content-Type: application/json
   "first": 5,
   "second": 3
 }
+
+### exception handling
+GET http://localhost:8080/reactive-math/square/20/throw
+accept: application/json
+
+### mono error
+GET http://localhost:8080/reactive-math/square/28/mono-error
+accept: application/json
+
+### assignment
+GET http://localhost:8080/reactive-math/square/8/assignment
+accept: application/json
