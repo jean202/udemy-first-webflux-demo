@@ -1,6 +1,7 @@
 package com.jhkim2.udemyfirstwebfluxdemo;
 
 import java.net.URI;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -17,12 +18,13 @@ public class Lec07QueryParamsTest extends BaseTest{
 
     @Test
     public void queryParamsTest() {
-        URI uri = UriComponentsBuilder.fromUriString(queryString)
-            .build(10, 20);
+//        URI uri = UriComponentsBuilder.fromUriString(queryString)
+//            .build(10, 20);
 
         Flux<Integer> integerFlux = this.webClient
             .get()
-            .uri(uri)
+//            .uri(uri)
+            .uri(b -> b.path("jobs/search").query("count={count}&page={page}").build(10, 20))
             .retrieve()
             .bodyToFlux(Integer.class)
             .doOnNext(System.out::println);
