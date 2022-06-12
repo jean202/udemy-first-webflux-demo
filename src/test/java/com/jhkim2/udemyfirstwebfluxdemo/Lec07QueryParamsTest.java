@@ -21,10 +21,15 @@ public class Lec07QueryParamsTest extends BaseTest{
 //        URI uri = UriComponentsBuilder.fromUriString(queryString)
 //            .build(10, 20);
 
+        Map<String, Integer> map = Map.of(
+            "count", 10,
+            "page", 20
+        );
+
         Flux<Integer> integerFlux = this.webClient
             .get()
 //            .uri(uri)
-            .uri(b -> b.path("jobs/search").query("count={count}&page={page}").build(10, 20))
+            .uri(b -> b.path("jobs/search").query("count={count}&page={page}").build(map))
             .retrieve()
             .bodyToFlux(Integer.class)
             .doOnNext(System.out::println);
