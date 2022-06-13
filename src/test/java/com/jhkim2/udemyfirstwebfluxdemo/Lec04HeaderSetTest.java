@@ -29,6 +29,10 @@ public class Lec04HeaderSetTest extends BaseTest {
             .expectNextCount(1)
             .verifyComplete();
 
+        StepVerifier.create(responseMono)
+            .expectNextCount(1)
+            .verifyComplete();
+
     }
 
     private MultiplyRequestDto buildRequestDto(int a, int b) {
