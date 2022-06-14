@@ -20,9 +20,14 @@ public class Lec04HeaderSetTest extends BaseTest {
             .uri("reactive-math/multiply")
             .bodyValue(buildRequestDto(5, 2))
             .headers(h -> h.set("someKey", "someValue"))
+//            .headers(h -> h.setBasicAuth("username", "password"))
             .retrieve()
             .bodyToMono(Response.class)
             .doOnNext(System.out::println);
+
+        StepVerifier.create(responseMono)
+            .expectNextCount(1)
+            .verifyComplete();
 
         StepVerifier.create(responseMono)
             .expectNextCount(1)
